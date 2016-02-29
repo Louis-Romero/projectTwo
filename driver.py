@@ -27,8 +27,8 @@ if(len(listOfBitsToHide) % 3):
 	numberOfPixelsNeeded = (len(listOfBitsToHide) / 3) + 1
 else: 
 	numberOfPixelsNeeded = len(listOfBitsToHide) / 3
-
 print  "number of pixels needed", numberOfPixelsNeeded
+
 numberOfRowsNeeded = (numberOfPixelsNeeded/width) + 1;
 print  "number of rows needed", numberOfRowsNeeded
 
@@ -49,10 +49,13 @@ for y in range(0, numberOfRowsNeeded):
 print "RGB bit values unchanged"
 functions.printList(listOfRGBValues)
 
-binaryListOfHiddenTextInPixels = []
 
 print "bits will now be hidden"
+
+binaryListOfHiddenTextInPixels = []
 stringOfHiddenBits = ""
+
+#For each iteration this loop creates a string of 8 bits bits 1-7 are from RGB values and bit 8 is the bit that needs to be hidden
 
 for ix in range(0, len(listOfBitsToHide)):
 	for jx in range (0, 7):
@@ -63,3 +66,10 @@ for ix in range(0, len(listOfBitsToHide)):
 	stringOfHiddenBits = ""
 
 functions.printList(binaryListOfHiddenTextInPixels)
+
+#This loops gets all decimal values of each binary string and createsa new list
+listOfNewRGBValues = []
+for ix in range(0, len(binaryListOfHiddenTextInPixels)):
+	listOfNewRGBValues.append(functions.makeBinaryANumber(binaryListOfHiddenTextInPixels[ix]))
+
+functions.printList(listOfNewRGBValues)

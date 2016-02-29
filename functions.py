@@ -20,9 +20,9 @@ def makeBinaryListOfWords(wordList):
 		for jx in range(0, len(word)):
 			oneWordInBinary += makeNumberBinary(ord(word[jx]))
 		wordsFromFileInBinary.append(oneWordInBinary)
+		wordsFromFileInBinary.append("00100000")
 		oneWordInBinary = "" #clears word
 	return wordsFromFileInBinary
-	
 
 def makeNumberBinary(number):
 	binaryString = ""
@@ -34,6 +34,19 @@ def makeNumberBinary(number):
 				binaryString += "1"
 				number -= baseTwoValues[ix]
 	return binaryString
+
+#This function takes a binary string and converts it to it's decimal value
+def makeBinaryANumber(binaryString):
+	baseTwoValues = [128, 64, 32, 16, 8, 4, 2, 1] 
+	sumOfValues = 0
+	for ix in range(0, len(binaryString)):
+		if(binaryString[ix] == "1"):
+			sumOfValues += baseTwoValues[ix]
+		else:
+			sumOfValues += 0
+	return sumOfValues
+
+
 
 def printList(listOfWords):
 	for ix in range(0, len(listOfWords)):
