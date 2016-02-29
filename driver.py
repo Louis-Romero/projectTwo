@@ -10,37 +10,48 @@ originalImage = Image.open("1.png")
 pixel = originalImage.load()
 width, height = originalImage.size
 
-#imageToHideText.show()
-
 wordsFromFile = functions.openFileReadText()
 binaryListOfWords = functions.makeBinaryListOfWords(wordsFromFile)
 
-#functions.printList(binaryListOfWords)
+listOfBitsToHide = []
 
 for binaryWord in binaryListOfWords:
 	for bit in binaryWord:
-		print bit
+		listOfBitsToHide.append(bit)
 
+functions.printList(listOfBitsToHide)
 
-#print binaryListOfWords[0][0]
-#print binaryListOfWords[0][1]
+if(len(listOfBitsToHide) % 3):
+	numberOfPixelsNeeded = (len(listOfBitsToHide) / 3) + 1
+else: 
+	numberOfPixelsNeeded = len(listOfBitsToHide) / 3
 
-#print binaryListOfWords[1][2]
-#copyOfImage = copy.copy(originalImage)
+listOfRGBValues = []
 
-#for y in range(0, height):
-	#for x in range(0, width):
-		#redValue, greenValue, blueValue = originalImage.getpixel((y, x))
-		#binaryRed = textToascii.convertOneASCIIValueToBinary(redValue)
-		#binaryGreen = textToascii.convertOneASCIIValueToBinary(greenValue)
-		#binaryBlue = textToascii.convertOneASCIIValueToBinary(blueValue)
+for y in range(0, 1):
+	for x in range(0, numberOfPixelsNeeded):
+		redValue, greenValue, blueValue = originalImage.getpixel((x, y))
+		binaryRed = functions.makeNumberBinary(redValue)
+		binaryGreen = functions.makeNumberBinary(greenValue)
+		binaryBlue = functions.makeNumberBinary(blueValue)
+		print "red " + str(redValue) + " green " + str(greenValue) + " blue " + str(blueValue)
+		listOfRGBValues.append(binaryRed)
+		listOfRGBValues.append(binaryGreen)
+		listOfRGBValues.append(binaryBlue)
 
-		#print "red " + str(redValue) + " green " + str(greenValue) + " blue " + str(blueValue)
+functions.printList(listOfRGBValues)
 
-		#binaryRed = textToascii.convertOneASCIIValueToBinary(redValue)
-		#binaryGreen = textToascii.convertOneASCIIValueToBinary(greenValue)
-		#binaryBlue = textToascii.convertOneASCIIValueToBinary(blueValue)
-		#print redValue
-		#print binaryRed
-		#print binaryGreen
-		#print binaryBlue
+binaryListOfHiddenTextInPixels = []
+
+print "hello"
+stringOfHiddenBits = ""
+
+for ix in range(0, len(listOfBitsToHide)):
+	for jx in range (0, 7):
+		stringOfHiddenBits += listOfRGBValues[ix][jx]
+		
+	stringOfHiddenBits += listOfBitsToHide[ix]
+	binaryListOfHiddenTextInPixels.append(stringOfHiddenBits)
+	stringOfHiddenBits = ""
+
+functions.printList(binaryListOfHiddenTextInPixels)
