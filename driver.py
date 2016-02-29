@@ -19,16 +19,24 @@ for binaryWord in binaryListOfWords:
 	for bit in binaryWord:
 		listOfBitsToHide.append(bit)
 
-functions.printList(listOfBitsToHide)
 
+functions.printList(listOfBitsToHide)
+print  "number of bits to hide", len(listOfBitsToHide)
+#This creates an integer value that will control the loop that creates a list of RGB values needed
 if(len(listOfBitsToHide) % 3):
 	numberOfPixelsNeeded = (len(listOfBitsToHide) / 3) + 1
 else: 
 	numberOfPixelsNeeded = len(listOfBitsToHide) / 3
 
+print  "number of pixels needed", numberOfPixelsNeeded
+numberOfRowsNeeded = (numberOfPixelsNeeded/width) + 1;
+print  "number of rows needed", numberOfRowsNeeded
+
+
 listOfRGBValues = []
 
-for y in range(0, 1):
+#This loop creates a list of the RGB values needed
+for y in range(0, numberOfRowsNeeded):
 	for x in range(0, numberOfPixelsNeeded):
 		redValue, greenValue, blueValue = originalImage.getpixel((x, y))
 		binaryRed = functions.makeNumberBinary(redValue)
@@ -38,12 +46,12 @@ for y in range(0, 1):
 		listOfRGBValues.append(binaryRed)
 		listOfRGBValues.append(binaryGreen)
 		listOfRGBValues.append(binaryBlue)
-
+print "RGB bit values unchanged"
 functions.printList(listOfRGBValues)
 
 binaryListOfHiddenTextInPixels = []
 
-print "hello"
+print "bits will now be hidden"
 stringOfHiddenBits = ""
 
 for ix in range(0, len(listOfBitsToHide)):

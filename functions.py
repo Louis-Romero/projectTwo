@@ -20,7 +20,6 @@ def makeBinaryListOfWords(wordList):
 		for jx in range(0, len(word)):
 			oneWordInBinary += makeNumberBinary(ord(word[jx]))
 		wordsFromFileInBinary.append(oneWordInBinary)
-		wordsFromFileInBinary.append("00100000") # adds a whitespace
 		oneWordInBinary = "" #clears word
 	return wordsFromFileInBinary
 	
