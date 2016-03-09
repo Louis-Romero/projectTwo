@@ -5,15 +5,15 @@
 #http://www.greenteapress.com/thinkpython/thinkpython.pdf 
 
 #This function accepts an ASCII value and returns the binary string of that ASCII value
-def convertOneASCIIValueToBinary(lettersASCIIValue):
+def convertOneASCIIValueToBinary(number):
 	binaryString = ""
 	baseTwoValues = [128, 64, 32, 16, 8, 4, 2, 1] 
 	for ix in range(0, 8):
-			if(lettersASCIIValue < baseTwoValues[ix]):
+			if(number < baseTwoValues[ix]):
 				binaryString += "0"
 			else:
 				binaryString += "1"
-				lettersASCIIValue -= baseTwoValues[ix]
+				number -= baseTwoValues[ix]
 	return binaryString
 
 def openFileReadTextAndMakeBinaryString():
