@@ -1,3 +1,4 @@
+
 #https://docs.python.org/2/tutorial/inputoutput.html
 #https://docs.python.org/2/library/functions.html
 #https://docs.python.org/2/library/stdtypes.html
