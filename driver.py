@@ -1,3 +1,5 @@
+
+
 #http://pillow.readthedocs.org/en/3.1.x/handbook/tutorial.html
 #http://stackoverflow.com/questions/11064786/get-pixels-rgb-using-pil 
 #https://docs.python.org/2/tutorial/modules.html
