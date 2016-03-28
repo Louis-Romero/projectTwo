@@ -1,3 +1,4 @@
+
 import Tkinter as tk   # python
 from Tkinter import *
 import tkFileDialog
@@ -14,7 +15,7 @@ class Text2PNG(tk.Tk):
         # will be raised above the others
         container = tk.Frame(self)
         container.pack(side="top")
-        self.geometry("500x325")
+        self.geometry("490x305")
         self.title("Text2PNG")
         #container.grid_rowconfigure(0, weight=1);container.grid_rowconfigure(1, weight=1);
         container.grid_columnconfigure(0, weight=1);container.grid_columnconfigure(1, weight=1);
