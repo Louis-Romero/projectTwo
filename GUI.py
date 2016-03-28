@@ -21,9 +21,7 @@ class Text2PNG(tk.Tk):
         # will be raised above the others
         container = tk.Frame(self)
         container.pack(side="top")
-        self.geometry("555x405")
         self.title("Text2PNG")
-        #container.grid_rowconfigure(0, weight=1);container.grid_rowconfigure(1, weight=1);
         container.grid_columnconfigure(0, weight=1);container.grid_columnconfigure(1, weight=1);
         container.grid_columnconfigure(2, weight=1); 
         self.frames = {}
@@ -50,7 +48,7 @@ class submitframe(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
         self.controller = controller
-        submitpage = tk.Button(self, text="Hide text", height=2, width = 16,  
+        submitpage = tk.Button(self, text="Hide text", height=2, width = 16, bg = "springgreen4", fg = "white",  
                             command=lambda: controller.show_frame("submitframe"))
         imagepage = tk.Button(self, text="Choose an image", height=2, width=16,
                             command=lambda: controller.show_frame("picframe"))
@@ -58,8 +56,8 @@ class submitframe(tk.Frame):
                             command=lambda: controller.show_frame("textframe"))
         decryptpage = tk.Button(self, text = "Decrypt the Image",height =2, width=16,
                             command=lambda: controller.show_frame("decryptframe"))
-        startencr = tk.Button(self, text="Start Hiding Process\n (will show picture when finished)", height = 8)
-        saveimage = tk.Button(self, text="Save Encrypted Image", height = 8)
+        startencr = tk.Button(self, text="Start Hiding Process\n (will show picture when finished)", height = 8, activebackground = "turquoise2")
+        saveimage = tk.Button(self, text="Save Encrypted Image", height = 8, activebackground = "turquoise2")
         submitpage.grid(row=0, column=2);imagepage.grid(row=0, column=0);textpage.grid(row=0, column =1); decryptpage.grid(row = 0, column = 3)
         startencr.grid(row=1, column =0, columnspan = 4, sticky=N+E+W+S);saveimage.grid(row=2, column =0, columnspan = 4, sticky=N+E+W+S)
 
@@ -72,14 +70,14 @@ class picframe(tk.Frame):
         self.controller = controller
         submitpage = tk.Button(self, text="Hide text", height=2, width = 16,  
                             command=lambda: controller.show_frame("submitframe"))
-        imagepage = tk.Button(self, text="Choose an image", height=2, width=16,
+        imagepage = tk.Button(self, text="Choose an image", height=2, width=16,bg = "springgreen4", fg = "white",
                             command=lambda: controller.show_frame("picframe"))
         textpage = tk.Button(self, text="Choose a text file",height =2, width=16,
                             command=lambda: controller.show_frame("textframe"))
         decryptpage = tk.Button(self, text = "Decrypt the Image",height =2, width=16,
                             command=lambda: controller.show_frame("decryptframe"))
-        browseimage = tk.Button(self, text="Browse Images", height = 8, command=self.onOpen)
-        showimage = tk.Button(self, text="Show Image", height = 8, command=self.openPic)
+        browseimage = tk.Button(self, text="Browse Images", height = 8, command=self.onOpen, activebackground = "turquoise2")
+        showimage = tk.Button(self, text="Show Image", height = 8, command=self.openPic, activebackground = "turquoise2")
         submitpage.grid(row=0, column=2)
         imagepage.grid(row=0, column=0);
         textpage.grid(row=0, column =1)
@@ -112,14 +110,14 @@ class textframe(tk.Frame):
                             command=lambda: controller.show_frame("submitframe"))
         imagepage = tk.Button(self, text="Choose an image", height=2, width=16,
                             command=lambda: controller.show_frame("picframe"))
-        textpage = tk.Button(self, text="Choose a text file",height =2, width=16,
+        textpage = tk.Button(self, text="Choose a text file",height =2, width=16,bg = "springgreen4", fg = "white",
                             command=lambda: controller.show_frame("textframe"))
         decryptpage = tk.Button(self, text = "Decrypt the Image",height =2, width=16,
                             command=lambda: controller.show_frame("decryptframe"))
         
 
-        browsetext = tk.Button(self, text="Browse Text Files", height = 8, command=self.onOpen)
-        showtext = tk.Button(self, text="Show Text File", height = 8, command=self.openText)
+        browsetext = tk.Button(self, text="Browse Text Files", height = 8, command=self.onOpen, activebackground = "turquoise2")
+        showtext = tk.Button(self, text="Show Text File", height = 8, command=self.openText, activebackground = "turquoise2")
         submitpage.grid(row=0, column=2)
         imagepage.grid(row=0, column=0);
         textpage.grid(row=0, column =1)
@@ -154,10 +152,10 @@ class decryptframe(tk.Frame):
                             command=lambda: controller.show_frame("picframe"))
         textpage = tk.Button(self, text="Choose a text file",height =2, width=16,
                             command=lambda: controller.show_frame("textframe"))
-        decryptpage = tk.Button(self, text = "Decrypt the Image",height =2, width=16,
+        decryptpage = tk.Button(self, text = "Decrypt the Image",height =2, width=16, bg = "springgreen4", fg = "white", 
                             command=lambda: controller.show_frame("decryptframe"))
-        browsedeimage = tk.Button(self, text = "Browse for the Encrypted Image", height = 8, command=self.nOpen)
-        showmess = tk.Button(self, text = "Show the Decrypted Message" , height = 8)
+        browsedeimage = tk.Button(self, text = "Browse for the Encrypted Image", height = 8, command=self.nOpen, activebackground = "turquoise2")
+        showmess = tk.Button(self, text = "Show the Decrypted Message" , height = 8, activebackground = "turquoise2")
         browsedeimage.grid(row = 1, column = 0, columnspan = 4, sticky=W+E)
         showmess.grid(row = 2, column = 0, columnspan = 4, sticky=W+E)
         submitpage.grid(row=0, column=2)
