@@ -1,9 +1,12 @@
 import Tkinter as tk   # python
 from Tkinter import *
 import tkFileDialog
+from PIL import Image
+import os
+import webbrowser
 
 TITLE_FONT = ("Helvetica", 18, "bold")
-
+#pathvar = ""
 class Text2PNG(tk.Tk):
 
     def __init__(self, *args, **kwargs):
@@ -67,7 +70,7 @@ class picframe(tk.Frame):
         textpage = tk.Button(self, text="Choose a text file",height =2, width=16,
                             command=lambda: controller.show_frame("textframe"))
         browseimage = tk.Button(self, text="Browse Images", height = 8, command=self.onOpen)
-        showimage = tk.Button(self, text="Show Image", height = 8)
+        showimage = tk.Button(self, text="Show Image", height = 8, command=self.openPic)
         submitpage.grid(row=0, column=2)
         imagepage.grid(row=0, column=0);
         textpage.grid(row=0, column =1)
@@ -77,6 +80,14 @@ class picframe(tk.Frame):
       
         ftypes = [('PNG Files', '*.png')]
         pngimage = tkFileDialog.askopenfilename(filetypes = ftypes)
+        pngimage = str(pngimage)
+        self.pathvar = tk.StringVar()
+        self.pathvar.set(pngimage)
+
+    def openPic(self):
+        filepath = self.pathvar.get()
+        showpng = Image.open(filepath)
+        showpng.show()
         
 
         
@@ -91,13 +102,25 @@ class textframe(tk.Frame):
                             command=lambda: controller.show_frame("picframe"))
         textpage = tk.Button(self, text="Choose a text file",height =2, width=16,
                             command=lambda: controller.show_frame("textframe"))
-        browseimage = tk.Button(self, text="Browse Text Files", height = 8)
-        showimage = tk.Button(self, text="Show Text File", height = 8)
+        browsetext = tk.Button(self, text="Browse Text Files", height = 8, command=self.onOpen)
+        showtext = tk.Button(self, text="Show Text File", height = 8, command=self.openText)
         submitpage.grid(row=0, column=2)
         imagepage.grid(row=0, column=0);
         textpage.grid(row=0, column =1)
-        browseimage.grid(row=1, column =0, columnspan = 3, sticky=W+E)
-        showimage.grid(row=2, column =0, columnspan = 3, sticky=W+E)
+        browsetext.grid(row=1, column =0, columnspan = 3, sticky=W+E)
+        showtext.grid(row=2, column =0, columnspan = 3, sticky=W+E)
+
+    def onOpen(self):
+      
+        ftypes = [('Text Files', '*.txt')]
+        txtfile = tkFileDialog.askopenfilename(filetypes = ftypes)
+        txtfile = str(txtfile)
+        self.pathvar = tk.StringVar()
+        self.pathvar.set(txtfile)
+
+    def openText(self):
+        filepath = self.pathvar.get()
+        webbrowser.open(filepath)
 
 
 if __name__ == "__main__":
